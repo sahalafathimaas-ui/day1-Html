@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img id="user"
+         src="https://cdn.vectorstock.com/i/1000v/58/31/circular-loading-icon-vector-24545831.jpg"
+         height="300"
+         width="300">
+
+    <br>
+
+    <button id="btn" onclick="getuser()">get user</button>
+
+    <script>
+
+        function getuser() {
+
+            const user = document.getElementById("user");
+
+            fetch("https://randomuser.me/api/")
+                .then(res => res.json())
+                .then(data => {
+                    user.src = data.results[0].picture.large;
+                })
+                .catch(err => console.log("Error getting image", err));
+
+        }
+
+    </script>
+
+</body>
+</html>
